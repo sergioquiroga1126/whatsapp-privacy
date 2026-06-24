@@ -1,0 +1,6 @@
+node_modules/
+chatgpt-env/
+.env
+.wrangler/
+*.log
+__pycache__/
