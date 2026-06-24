@@ -100,14 +100,26 @@ Email: cucinadiverona@gmail.com`
       }
     ];
 
-    const aiResponse = await fetch("https://api.openai.com/v1/chat/completions", {
+    const openwebuiUrl = (env.OPENWEBUI_URL || "https://chefmaria1ai.duckdns.org").replace(/\/$/, "");
+    const openwebuiApiKey = env.OPENWEBUI_API_KEY;
+    const openwebuiModel = env.OPENWEBUI_MODEL || "chef-maria";
+
+    if (!openwebuiApiKey) {
+      console.log("Missing OPENWEBUI_API_KEY");
+      return jsonResponse({
+        answer:
+          "Sorry, Chef Maria AI is having trouble connecting right now. Please call 561-692-1473 or email cucinadiverona@gmail.com."
+      });
+    }
+
+    const aiResponse = await fetch(`${openwebuiUrl}/api/chat/completions`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${openaiApiKey}`,
+        Authorization: `Bearer ${openwebuiApiKey}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini",
+        model: openwebuiModel,
         messages,
         temperature: 0.7
       })
@@ -115,7 +127,7 @@ Email: cucinadiverona@gmail.com`
 
     if (!aiResponse.ok) {
       const errorText = await aiResponse.text();
-      console.log("OpenAI error:", errorText);
+      console.log("OpenWebUI error:", errorText);
 
       return jsonResponse({
         answer:
