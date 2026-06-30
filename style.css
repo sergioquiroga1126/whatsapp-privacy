@@ -40,6 +40,7 @@ footer{background:var(--blue);color:white;text-align:center;padding:54px 6vw}.fo
   background: #a52727;
 }
 }
+}
 
 
 /* Strong fix for first Chef Maria image crop */
@@ -65,6 +66,15 @@ footer{background:var(--blue);color:white;text-align:center;padding:54px 6vw}.fo
   width: 100% !important;
   height: auto !important;
   max-height: none !important;
+  object-fit: contain !important;
+  object-position: center top !important;
+}
+
+
+/* Show full first Chef Maria photo */
+.intro-image img {
+  width: 100% !important;
+  height: auto !important;
   object-fit: contain !important;
   object-position: center top !important;
 }
