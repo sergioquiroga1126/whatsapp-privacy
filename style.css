@@ -49,3 +49,9 @@ footer{background:var(--blue);color:white;text-align:center;padding:54px 6vw}.fo
   object-fit: cover;
   object-position: center top !important;
 }
+
+/* Fix first Chef Maria photo crop: show her head */
+.intro-image img {
+  object-fit: cover;
+  object-position: center top !important;
+}
